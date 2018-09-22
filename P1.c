@@ -1,5 +1,5 @@
 /*P1.c*/
-/*Wander Victor Verçosa Mares*/
+/*Wander Victor VerÃ§osa Mares*/
 /*11811EAU010*/
 #include <stdio.h>
 
@@ -8,7 +8,7 @@ int main()
 	int estado=0, i;
 	char bits[256];
 	printf("Digite uma sequencia: ");
-	scanf("%s", &bits);
+	scanf("%s", bits);
 	for(i=0; bits[i]!='\0'; i++){
 		if(estado==0 && bits[i]==0)
 			;
