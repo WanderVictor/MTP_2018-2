@@ -1,330 +1,186 @@
 /*p2.c*/
-/*Wander Victor Ver�osa Mares*/
+/*Wander Victor Verçosa Mares*/
 /*11811EAU010*/
 #include <stdio.h>
 
-void bindec()
-{
-	char nbits[256], aux[256];
-	int i=0, j, x=0, y=1, dec=0;
-	printf("\nDigite o numero binario: ");
-			scanf("%s", nbits);
-			getchar(); 
-			while(nbits[i] != '\0'){
-				i++;
-				x++;
-			}
-			j=x-1;
-			for(i=0; i<x; i++, j--){ //inverte a string
-				aux[j] = nbits[i];
-			}
-			for(j=1; j<x;j++){  //percorre a partir da seg pos da string
-				y=y*2;
-				if(aux[j] == '1')
-					dec = dec + y;
-			}
-			if(aux[0] == '1') //primeira pos da string (2^0 x 1 = 1)
-				dec = dec +1; //somou com +1
-			printf("\nNumero decimal: %d ", dec);
-}
-
-void binhex()
-{
- 
- char bin2[256];
- int cont = 0, z, b=0, x=1,hex=0,convert[100]; 
- printf("\nDigite o numero binario: ");
-	   scanf("%s", bin2);
-	   getchar();
-	   for( cont = 0; bin2[cont]!= '\0'; cont++);
-	   cont--;		   
-	   for( z = cont; z >= 0 ; z--)
-	  {
-	  
-		if(bin2[z] == '0')
-		
-		convert[z] = 0;
-		else if( bin2[z] == '1')
-		convert[z] = 1; 
-		}
-		b = cont;
-		while( b >= 0)
-		{
-			while( x <= cont - b)
-			{
-				convert[b] *=2;
-				x++;
-			}
-		
-		hex += convert[b];
-		x = 1;
-		b--;
-        }
-	  printf("\Numero hexadecimal: = %x", hex);
-}
-void hexdec()
-{
-   char num[256], inum[256];
-   int dec=0, i=0, j=0, y=0, x=1;
-   printf("\nDigite o numero hexadecimal: ");
-   scanf("%s", num);
-   getchar();
-   while(num[i] != '\0'){
-     i++;
-     y++;
-   }
-   j = y-1;
-   for(i=0; i<y; i++, j--){
-    inum[j] = num[i];
-   }
-   for(j=1; j<y;j++){
-    x=x*16;
-    if(inum[j] == '1')
-     dec = dec + x;
-    if(inum[j] == '2')
-     dec = dec + 2*x;
-    if(inum[j] == '3')
-     dec = dec + 3*x;
-    if(inum[j] == '4')
-     dec = dec + 4*x;
-    if(inum[j] == '5')
-     dec = dec + 5*x;
-    if(inum[j] == '6')
-     dec = dec + 6*x;
-    if(inum[j] == '7')
-     dec = dec + 7*x;
-    if(inum[j] == '8')
-     dec = dec + 8*x;
-    if(inum[j] == '9')
-     dec = dec + 9*x;
-    if(inum[j] == 'A')
-     dec = dec + 10*x;
-    if(inum[j] == 'B')
-     dec = dec + 11*x;
-    if(inum[j] == 'C')
-     dec = dec + 12*x;
-    if(inum[j] == 'D')
-     dec = dec + 13*x;
-    if(inum[j] == 'E')
-     dec = dec + 14*x;
-    if(inum[j] == 'F')
-     dec = dec + 15*x;
-   }
-   if(inum[0] == '1')
-    dec = dec +1;
-   if(inum[0] == '2')
-    dec = dec + 2;
-   if(inum[0] == '3')
-    dec = dec + 3;
-   if(inum[0] == '4')
-    dec = dec + 4;
-   if(inum[0] == '5')
-    dec = dec + 5;
-   if(inum[0] == '6')
-    dec = dec + 6;
-   if(inum[0] == '7')
-    dec = dec + 7;
-   if(inum[0] == '8')
-    dec = dec + 8;
-   if(inum[0] == '9')
-    dec = dec + 9;
-   if(inum[0] == 'A')
-    dec = dec + 10;
-   if(inum[0] == 'B')
-    dec = dec + 11;
-   if(inum[0] == 'C')
-    dec = dec + 12;
-   if(inum[0] == 'D')
-    dec = dec + 13;
-   if(inum[0] == 'E')
-    dec = dec + 14;
-   if(inum[0] == 'F')
-    dec = dec + 15;
-   printf("\nNumero decimal: %d ", dec);
-}
-
-void hexbi()
-{
-   int n, n_convertido[100], i;
-   printf("\nDigite o numero hexadecimal: ");
-   scanf("%x", &n);
-   getchar();
-   for(i = 0; n >= 1; i++)
-   {
-    n_convertido[i] = n % 2;
-    n /= 2;
-   }
-   printf("\nNumero convertido: ");
-   for(i -= 1; i >= 0; i--)
-   {
-    printf("%i", n_convertido[i]);
-   }
-}
-
-void decbi()
-{
-	int num, r, i;
-    printf("Digite o numero: ");
-    scanf("%d", &num);
-    for(i = 9; i >= 0; i--) 
- {
-       r = num >> i;
-        if(r & 1) 
-           {printf("1");}
-        else 
-           {printf("0");}
- }
-    printf("\n");
-}
-
-void dechex()
-{
-   int num, v_num[256], i=0, j;
-   printf("\nDigite o numero decimal: ");
-   scanf("%d", &num);
-   getchar();
-   while(num > 0){
-    v_num[i] = num % 16;
-    i++;
-    num = num / 16;
-   }
-   printf("\n");
-   for(j = i - 1; j >= 0; j--){
-    if(v_num[j] >= 0 && v_num[j] <= 9 )
-     printf("%d", v_num[j]);
-    if(v_num[j] == 10)
-     printf("A");
-    if(v_num[j] == 11)
-     printf("B");
-    if(v_num[j] == 12)
-     printf("C");
-    if(v_num[j] == 13)
-     printf("D");
-    if(v_num[j] == 14)
-     printf("E");
-    if(v_num[j] == 15)
-     printf("F");
+int decimal_to(int numeros[], int numero, int cont, int divisor){
+    int quociente = 1;
+    for(cont = 0; quociente != 0; cont++){
+        numeros[cont] = numero%divisor;
+        quociente = numero/divisor;
+        numero = numero/divisor;
     }
+    cont--;
+    return cont;
 }
 
-void octdec()
-{
-   char num[256], inum[256];
-   int i=0, j, y=0, x=1, dec=0;
-   printf("\nDigite o numero octal: ");
-   scanf("%s", num);
-   getchar();
-   while(num[i] != '\0'){
-    i++;
-    y++;
-   }
-   j = y -1;
-   for(i=0; i<y; i++, j--){
-    inum[j] = num[i];
-   }
-   for(j=1; j<y;j++){
-    x=x*8;
-    if(inum[j] == '1')
-     dec = dec + x;
-    if(inum[j] == '2')
-     dec = dec + 2*x;
-    if(inum[j] == '3')
-     dec = dec + 3*x;
-    if(inum[j] == '4')
-     dec = dec + 4*x;
-    if(inum[j] == '5')
-     dec = dec + 5*x;
-    if(inum[j] == '6')
-     dec = dec + 6*x;
-    if(inum[j] == '7')
-     dec = dec + 7*x;
-   }
-   if(inum[0] == '1')
-    dec = dec +1;
-   if(inum[0] == '2')
-    dec = dec + 2;
-   if(inum[0] == '3')
-    dec = dec + 3;
-   if(inum[0] == '4')
-    dec = dec + 4;
-   if(inum[0] == '5')
-    dec = dec + 5;
-   if(inum[0] == '6')
-    dec = dec + 6;
-   if(inum[0] == '7')
-    dec = dec + 7;
-   printf("\nNumero decimal: %d ", dec);
+int to_decimal(char bits[], int numeros[], int numero, int cont, int base){
+    int j, k, potencia;
+    cont--;
+    for(j = cont; j >= 0; j--){
+		potencia = 1;
+		for(k = cont; k > j; k--)
+			potencia *= base;
+		numeros[j] = numeros[j]*potencia;
+	}
+	for(j = 0; j <= cont; j++)
+        numero = numero + numeros[j];
+	sprintf(bits, "%d", numero);
+	return numero;
 }
 
-void decoct()
-{
-   int d_num, v_num[256], i=0, j;
-   printf("\nDigite o numero em decimal: ");
-   scanf("%d", &d_num);
-   getchar();
-   while(d_num > 0){
-    v_num[i] = d_num % 8;
-    i++;
-    d_num = d_num / 8;
-   }
-   printf("\n");
-   printf("\nNumero octal: ");
-   for(j = i - 1; j >= 0; j--)
-    printf("%d", v_num[j]);	
+int string_vetor(char bits[], int numeros[], int cont){
+    for(cont = 0; bits[cont] != '\0'; cont++){
+        if(bits[cont] == '0')
+            numeros[cont] = 0;
+        else if(bits[cont] == '1')
+            numeros[cont] = 1;
+        else if(bits[cont] == '2')
+            numeros[cont] = 2;
+        else if(bits[cont] == '3')
+            numeros[cont] = 3;
+        else if(bits[cont] == '4')
+            numeros[cont] = 4;
+        else if(bits[cont] == '5')
+            numeros[cont] = 5;
+        else if(bits[cont] == '6')
+            numeros[cont] = 6;
+        else if(bits[cont] == '7')
+            numeros[cont] = 7;
+        else if(bits[cont] == '8')
+            numeros[cont] = 8;
+        else if(bits[cont] == '9')
+            numeros[cont] = 9;
+        else if(bits[cont] == 'A' || bits[cont] == 'a')
+            numeros[cont] = 10;
+        else if(bits[cont] == 'B' || bits[cont] == 'b')
+            numeros[cont] = 11;
+        else if(bits[cont] == 'C' || bits[cont] == 'c')
+            numeros[cont] = 12;
+        else if(bits[cont] == 'D' || bits[cont] == 'd')
+            numeros[cont] = 13;
+        else if(bits[cont] == 'E' || bits[cont] == 'e')
+            numeros[cont] = 14;
+        else
+            numeros[cont] = 15;
+    }
+    return cont;
 }
 
-int main ()
-{
-	int  op;
-	printf("Conversao de bases numericas\n");
-	printf("\n1- Binario para decimal");
-	printf("\n2- Binario em hexadecimal");
-	printf("\n3- Hexadecimal para decimal");
-	printf("\n4- Hexadecimal para binario");
-	printf("\n5- Decimal para binario"); 
-	printf("\n6- Decimal para hexadecimal");
-	printf("\n7- Octal para decimmal");
-	printf("\n8- Decimal para octal");
-	printf("\n9- Sair\n");
-	scanf("%d", &op);
-		switch(op)
-		{
-			case 1: 
-				bindec();
-				break;
-				return 0;
-			case 2:
-				binhex();
-				break;
-				return 0;
-			case 3:
-				hexdec();
-				break;
-				return 0;
-			case 4:
-				hexbi();
-				break;
-				return 0;
-			case 5:
-			    decbi();
-			    break;
-			    return 0;
-			case 6:
-				dechex();
-				break;
-				return 0;
-			case 7:
-				octdec();
-				break;
-				return 0;
-			case 8:
-				decoct();
-				break;
-				return 0;
-			case 9:
-				return 0;
-			default:
-				break;			
+int vetor_string(char bits[], int numeros[], int cont){
+    int k, j;
+    for(j = cont, k = 0; j >= 0; j--, k++){
+        if(numeros[j] == 0)
+            bits[k] = 48;
+        else if(numeros[j] == 1)
+            bits[k] = 49;
+        else if(numeros[j] == 2)
+            bits[k] = 50;
+        else if(numeros[j] == 3)
+            bits[k] = 51;
+        else if(numeros[j] == 4)
+            bits[k] = 52;
+        else if(numeros[j] == 5)
+            bits[k] = 53;
+        else if(numeros[j] == 6)
+            bits[k] = 54;
+        else if(numeros[j] == 7)
+            bits[k] = 55;
+        else if(numeros[j] == 8)
+            bits[k] = 56;
+        else if(numeros[j] == 9)
+            bits[k] = 57;
+        else if(numeros[j] == 10)
+            bits[k] = 'A';
+        else if(numeros[j] == 11)
+            bits[k] = 'B';
+        else if(numeros[j] == 12)
+            bits[k] = 'C';
+        else if(numeros[j] == 13)
+            bits[k] = 'D';
+        else if(numeros[j] == 14)
+            bits[k] = 'E';
+        else
+            bits[k] = 'F';
+    }
+    bits[k] = '\0';
+    return cont;
+}
+
+int main(){
+	int numero, opcao, numeros[255], cont;
+	char bits[256];
+	printf("\nEscolha uma das opções: \n 1. Binário para Decimal \n 2. Binário para Hexadecimal");
+	printf("\n 3. Hexadecimal para Decimal \n 4. Hexadecimal para Binário \n 5. Decimal para Binário");
+	printf("\n 6. Decimal para Hexadecimal \n 7. Octal para Decimal \n 8. Decimal para Octal");
+	printf("\n Digite qualquer outro valor para sair do programa");
+	do{
+		cont = 0; numero = 0;
+		printf("\nOpção: ");
+		scanf("%d",&opcao); getchar();
+		switch(opcao){
+		case 1:
+			printf("Informe um número binário: ");
+			scanf("%s", bits);
+			cont = string_vetor(bits, numeros, cont);
+			numero = to_decimal(bits, numeros, numero, cont, 2);
+			printf("\n	O número em decimal é: %s \n", bits);
+			break;
+		case 2:
+			printf("Informe um número binário: ");
+			scanf("%s", bits);
+			cont = string_vetor(bits, numeros, cont);
+			numero = to_decimal(bits, numeros, numero, cont, 2);
+			cont = decimal_to(numeros, numero, cont, 16);
+			cont = vetor_string(bits, numeros, cont);
+			printf("\n	O número em hexadecimal é: %s \n", bits);
+			break;
+		case 3:
+			printf("Informe um número hexadecimal: ");
+			scanf("%s", bits);
+			cont = string_vetor(bits, numeros, cont);
+			numero = to_decimal(bits, numeros, numero, cont, 16);
+			printf("\n	O número em decimal é: %s \n", bits);
+			break;
+		case 4:
+			printf("Informe um número hexadecimal: ");
+			scanf("%s", bits);
+			cont = string_vetor(bits, numeros, cont);
+			numero = to_decimal(bits, numeros, numero, cont, 16);
+			cont = decimal_to(numeros, numero, cont, 2);
+			cont = vetor_string(bits, numeros, cont);
+			printf("\n	O número em binário é: %s \n", bits);
+			break;
+		case 5:
+			printf("Informe um número decimal: ");
+			scanf("%d", &numero);
+            cont = decimal_to(numeros, numero, cont, 2);
+            cont = vetor_string(bits, numeros, cont);
+			printf("\n	O número em binário é: %s \n", bits);
+			break;
+		case 6:
+			printf("Informe um número decimal: ");
+			scanf("%d", &numero);
+            cont = decimal_to(numeros, numero, cont, 16);
+            cont = vetor_string(bits, numeros, cont);
+			printf("\n	O número em hexadecimal é: %s \n", bits);
+			break;
+		case 7:
+			printf("Informe um número octal: ");
+			scanf("%s", bits);
+			cont = string_vetor(bits, numeros, cont);
+			numero = to_decimal(bits, numeros, numero, cont, 8);
+			printf("\n	O número em decimal é: %s \n", bits);
+			break;
+		case 8:
+			printf("Informe um número decimal: ");
+			scanf("%d", &numero);
+			cont = decimal_to(numeros, numero, cont, 8);
+			cont = vetor_string(bits, numeros, cont);
+			printf("\n	O número em octal é: %s \n", bits);
+			break;
+		default:
+			return 0;
 		}
-	return 0;
+	}while(opcao >= 1 && opcao <=8);
 }
